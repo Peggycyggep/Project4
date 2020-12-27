@@ -6,6 +6,7 @@
 ros::ServiceClient client;
 float last_angular;
 float last_linear;
+float ball_found;
 
 // This function calls the command_robot service to drive the robot in the specified direction
 void drive_robot(float lin_x, float ang_z)
@@ -26,7 +27,7 @@ void process_image_callback(const sensor_msgs::Image img)
     int obj_row_start, obj_row_end, obj_step_start, obj_step_end;
     int pos_row, pos_step, pos;
     int white_pixel = 255;
-    float angular=0.0;		//0 center, -val move to left, +val move to right
+    float angular=0.0;		//0 center, +val move to left, -val move to right
     float linear = 0.0;		//0 no move, -val move back, +val move forward
 
     // TODO: Loop through each pixel in the image and check if there's a bright white one
@@ -66,18 +67,24 @@ void process_image_callback(const sensor_msgs::Image img)
     // Then, identify if this pixel falls in the left, mid, or right side of the image      
   if( obj_step_start>-1 )
   {
-    float obj_center = (float)(obj_step_start-obj_step_end)/2.0 + obj_step_start;
+    float obj_center = (float)(obj_step_end-obj_step_start)/2.0 + obj_step_start;
     float step_center = (float)(max_step)/2.0;
-    
-    //assume 1 would be similar to 90 degree turn (apply scaling if otherwise)
-    angular = -1*(obj_center - step_center) / step_center;
-    linear = 0.5;		//move forward
+    float deg = (obj_center / (float)max_step - 0.5) * -2;
+
+    ball_found = 1;
+    angular = deg;
+    linear = 0.2;
+  }
+  else if(ball_found==0)
+  {
+    linear = 0.1;
+    angular = 1;		//turn around (rad/sec)
   }
   // Request a stop when there's no white ball seen by the camera
   else
   {
     linear = 0;
-    angular = 0.5;		//turn around
+    angular = 0;
   }
   
   // Depending on the white ball position, call the drive_bot function and pass velocities to it
@@ -94,6 +101,8 @@ int main(int argc, char** argv)
     // Initialize the process_image node and create a handle to it
     ros::init(argc, argv, "process_image");
     ros::NodeHandle n;
+    
+    ball_found = 0;
 
     // Define a client service capable of requesting services from command_robot
     client = n.serviceClient<ball_chaser::DriveToTarget>("/ball_chaser/command_robot");
