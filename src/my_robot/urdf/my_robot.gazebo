@@ -8,9 +8,9 @@
       <updateRate>10</updateRate>
       <leftFrontJoint>left_wheel_hinge</leftFrontJoint>
       <rightFrontJoint>right_wheel_hinge</rightFrontJoint>
-      <leftRearJoint>left_back_wheel_joint</leftRearJoint>
-      <rightRearJoint>right_back_wheel_joint</rightRearJoint>    
-      <wheelSeparation>0.4</wheelSeparation>
+      <leftRearJoint>left_back_wheel_hinge</leftRearJoint>
+      <rightRearJoint>right_back_wheel_hinge</rightRearJoint>    
+      <wheelSeparation>0.5</wheelSeparation>
       <wheelDiameter>0.2</wheelDiameter>
       <torque>10</torque>
       <commandTopic>cmd_vel</commandTopic>
@@ -102,5 +102,24 @@
     </sensor>
   </gazebo>
 
+  <gazebo reference="right_wheel">
+    <material>Gazebo/Red</material>
+  </gazebo>
+
+  <gazebo reference="left_wheel">
+    <material>Gazebo/Red</material>
+  </gazebo>
+
+  <gazebo reference="right_back_wheel">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+  <gazebo reference="left_back_wheel">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+  <gazebo reference="chassis">
+    <material>Gazebo/Blue</material>
+  </gazebo>
 
 </robot>
