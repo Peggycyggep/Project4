@@ -27,16 +27,9 @@ bool handle_drive_request(ball_chaser::DriveToTarget::Request& request, ball_cha
   
   //return message feedback with requested wheel velocities
   if(request.linear_x!=0)
-  	response.msg_feedback = "moving at liner " + std::to_string(request.linear_x) + " m/sec and angular " + std::to_string(request.angular_z) + " rad/sec";
-  else if( request.angular_z!=0 )
-  {
-    response.msg_feedback = "searching at " + std::to_string(request.angular_z) + " rad/sec)";
-  }
+  	response.msg_feedback = "moving at " + std::to_string(request.linear_x) + " speed";
   else
-  {
-    response.msg_feedback = "stopped";    
-  }
-  
+    response.msg_feedback = "stopped";
   ROS_INFO_STREAM(response.msg_feedback);
     
   return true;

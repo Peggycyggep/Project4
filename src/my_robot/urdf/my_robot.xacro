@@ -76,7 +76,7 @@
   </link>
 
   <joint name="left_wheel_hinge" type="continuous">
-    <origin xyz="0.15 0.25 0" rpy="0 0 0" />
+    <origin xyz="0.15 0.15 0" rpy="0 0 0" />
     <parent link="chassis"/>
     <child link="left_wheel" />
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -85,7 +85,7 @@
   </joint>
   
   <joint name="right_wheel_hinge" type="continuous">
-    <origin xyz="0.15 -0.25 0" rpy="0 0 0" />
+    <origin xyz="0.15 -0.15 0" rpy="0 0 0" />
     <parent link="chassis"/>
     <child link="right_wheel" />
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -94,7 +94,7 @@
   </joint>
 
   <joint name="left_back_wheel_hinge" type="continuous">
-    <origin xyz="-0.15 0.25 0" rpy="0 0 0" />
+    <origin xyz="-0.15 0.15 0" rpy="0 0 0" />
     <parent link="chassis"/>
     <child link="left_back_wheel" />
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -103,7 +103,7 @@
   </joint>
   
   <joint name="right_back_wheel_hinge" type="continuous">
-    <origin xyz="-0.15 -0.25 0" rpy="0 0 0" />
+    <origin xyz="-0.15 -0.15 0" rpy="0 0 0" />
     <parent link="chassis"/>
     <child link="right_back_wheel" />
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -127,7 +127,7 @@
         <cylinder radius="0.1" length="0.05"/>
       </geometry>
     </collision>
-    <visual name='right_wheel_visual'>
+    <visual name='visual'>
       <origin xyz="0 0 0" rpy=" 0 1.5707 1.5707"/>
       <geometry>
         <cylinder radius="0.1" length="0.05"/>
@@ -151,7 +151,7 @@
         <cylinder radius="0.1" length="0.05"/>
       </geometry>
     </collision>
-    <visual name='left_wheel_visual'>
+    <visual name='visual'>
       <origin xyz="0 0 0" rpy=" 0 1.5707 1.5707"/>
       <geometry>
         <cylinder radius="0.1" length="0.05"/>
@@ -175,7 +175,7 @@
         <cylinder radius="0.1" length="0.05"/>
       </geometry>
     </collision>
-    <visual name='right_back_wheel_visual'>
+    <visual name='visual'>
       <origin xyz="0 0 0" rpy=" 0 1.5707 1.5707"/>
       <geometry>
         <cylinder radius="0.1" length="0.05"/>
@@ -199,7 +199,7 @@
         <cylinder radius="0.1" length="0.05"/>
       </geometry>
     </collision>
-    <visual name='left_back_wheel_visual'>
+    <visual name='visual'>
       <origin xyz="0 0 0" rpy=" 0 1.5707 1.5707"/>
       <geometry>
         <cylinder radius="0.1" length="0.05"/>
@@ -223,14 +223,14 @@
     <collision name='collision'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/> 
       <geometry>
-        <box size=".4 .4 .1"/>
+        <box size=".4 .2 .1"/>
       </geometry>
     </collision>
 
     <visual name='chassis_visual'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/>
       <geometry>
-        <box size=".4 .4 .1"/>
+        <box size=".4 .2 .1"/>
       </geometry>
     </visual>
 
