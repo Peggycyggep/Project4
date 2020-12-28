@@ -39,9 +39,10 @@ void process_image_callback(const sensor_msgs::Image img)
   obj_step_end = -1;
   for(pos_row=0, pos=0; pos_row<max_row; pos_row++)
   {
-    for(pos_step=0; pos_step<max_step; pos_step++, pos++)
+    for(pos_step=0; pos_step<max_step; pos_step+=3)
     {
-      if(img.data[pos]==white_pixel)
+      pos = pos_row*max_step + pos_step;
+      if( (img.data[pos]==white_pixel)&&(img.data[pos+1]==white_pixel)&&(img.data[pos+2]==white_pixel) )
       {
         if(obj_row_start==-1)
         {
