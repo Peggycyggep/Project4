@@ -1,9 +1,6 @@
 <launch>
 <!-- TODO: add nodes here -->
-<<<<<<< HEAD
 
-=======
->>>>>>> 76c932e99b9776f569ca655a2274a2da7e16f793
   <!-- Map Server -->
   <arg name="map_file" default="$(find my_robot)/maps/map.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
@@ -19,11 +16,13 @@
     <!-- If you choose to define initial pose here -->
     <param name="initial_pose_x" value="0"/>
     <param name="initial_pose_y" value="0"/>
-<<<<<<< HEAD
     <param name="initial_pose_a" value = "4.45" />
-=======
-    <param name="initial_pose_a" value = "1.5" />
->>>>>>> 76c932e99b9776f569ca655a2274a2da7e16f793
+    
+    <param name="min_particles" value="20"/>
+    <param name="max_particles" value="100"/>
+    <param name="update_min_d" value = "0.1"/>
+    <param name="update_min_a" value = "0.1"/>
+    <param name="resample_interval" value = "2"/>
   </node>
   
   <!-- Move Base -->
