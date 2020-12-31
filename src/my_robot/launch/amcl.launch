@@ -1,14 +1,10 @@
 <launch>
 <!-- TODO: add nodes here -->
-  <arg name="Initial_pose_a" default = "0" />
-  <arg name="Initial_pose_x" default = "0" />
-  <arg name="Initial_pose_y" default = "2" />
-  
+
   <!-- Map Server -->
   <arg name="map_file" default="$(find my_robot)/maps/map.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
-  <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster" args="0 0 0 0 0 0 map odom 100"/>
-      
+     
   <!-- AMCL Node -->
   <node name="amcl" pkg="amcl" type="amcl" output="screen">
     <remap from="scan" to="my_robot/laser/scan"/>
@@ -20,6 +16,7 @@
     <!-- If you choose to define initial pose here -->
     <param name="initial_pose_x" value="0"/>
     <param name="initial_pose_y" value="0"/>
+    <param name="initial_pose_a" value = "4.45" />
   </node>
   
   <!-- Move Base -->
